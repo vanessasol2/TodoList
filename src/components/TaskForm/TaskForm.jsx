@@ -37,9 +37,17 @@ const TaskForm = ({ addTask, updateTask, taskToEdit, clearTaskToEdit }) => {
 
   const validateForm = () => {
     const newErrors = {};
+
     if (!formData.title.trim()) {
       newErrors.title = 'El título es obligatorio';
+    } else if (formData.title.trim().length < 3) {
+      newErrors.title = 'El título debe tener al menos 3 caracteres';
     }
+
+    if (formData.description.trim().length > 300) {
+      newErrors.description = 'La descripción no puede exceder los 300 caracteres';
+    }
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -84,6 +92,7 @@ const TaskForm = ({ addTask, updateTask, taskToEdit, clearTaskToEdit }) => {
         {taskToEdit ? 'Editar Tarea ' : 'Crear Nueva Tarea '}
       </h2>
       <form onSubmit={handleSubmit} className="space-y-6">
+        {/* Campo Título */}
         <div>
           <label htmlFor="title" className="block text-sm font-medium text-gray-700 mb-1">
             Título <span className="text-red-500">*</span>
@@ -102,6 +111,7 @@ const TaskForm = ({ addTask, updateTask, taskToEdit, clearTaskToEdit }) => {
           {errors.title && <p className="text-sm text-red-500 mt-1">{errors.title}</p>}
         </div>
 
+        {/* Campo Descripción */}
         <div>
           <label htmlFor="description" className="block text-sm font-medium text-gray-700 mb-1">
             Descripción
@@ -113,8 +123,11 @@ const TaskForm = ({ addTask, updateTask, taskToEdit, clearTaskToEdit }) => {
             onChange={handleChange}
             placeholder="Describe la tarea con más detalle..."
             rows="4"
-            className="w-full px-4 py-3 rounded-lg border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-violet-400"
+            className={`w-full px-4 py-3 rounded-lg border shadow-sm focus:outline-none focus:ring-2 focus:ring-violet-400 ${
+              errors.description ? 'border-red-500' : 'border-gray-300'
+            }`}
           />
+          {errors.description && <p className="text-sm text-red-500 mt-1">{errors.description}</p>}
         </div>
 
         <div className="flex flex-col sm:flex-row justify-end gap-3">
