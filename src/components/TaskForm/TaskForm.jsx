@@ -103,7 +103,7 @@ const TaskForm = ({ addTask, updateTask, taskToEdit, clearTaskToEdit }) => {
             name="title"
             value={formData.title}
             onChange={handleChange}
-            placeholder="Ej. Comprar víveres"
+            placeholder="Titulo de la tarea"
             className={`w-full px-4 py-3 rounded-lg border shadow-sm focus:outline-none focus:ring-2 focus:ring-violet-400 ${
               errors.title ? 'border-red-500' : 'border-gray-300'
             }`}
