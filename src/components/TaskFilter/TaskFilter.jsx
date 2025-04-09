@@ -1,5 +1,5 @@
 import React from 'react';
-import { ListChecks, CheckCircle2, CircleDashed } from 'lucide-react'; // Asegúrate de tener lucide-react instalado
+import { ListChecks, CheckCircle2, CircleDashed } from 'lucide-react'; 
 
 const TaskFilter = ({ filter, setFilter }) => {
   const baseClass =

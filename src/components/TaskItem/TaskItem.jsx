@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { CheckCircle, Circle, Pencil, Trash2 } from 'lucide-react'; // Asegúrate de tener lucide-react instalado
+import { CheckCircle, Circle, Pencil, Trash2 } from 'lucide-react'; 
 
 const TaskItem = ({ task, toggleComplete, setEditingTask, deleteTask }) => {
   return (
